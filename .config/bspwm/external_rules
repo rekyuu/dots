@@ -1,0 +1,20 @@
+#! /bin/sh
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+title=$(xtitle "$wid")
+
+case $class in 
+    google-chrome | Google-chrome)
+        if [[ $title == *YouTube* ]] || [[ $title == *Plex* ]]; then
+            echo "desktop=3 split_dir=west sticky=on"
+        fi
+        ;;
+    telegram-desktop | TelegramDesktop)
+        if [[ $title == *"Media viewer"* ]]; then
+            echo "state=floating"
+        fi
+        ;;
+esac

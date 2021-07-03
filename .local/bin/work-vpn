@@ -1,0 +1,23 @@
+#! /bin/sh
+
+gateway=$(secret-tool lookup work vpn-gateway)
+username=$(secret-tool lookup work username)
+password=$(secret-tool lookup work password)
+cert=$(secret-tool lookup work vpn-cert)
+
+# Connect VPN
+echo $password | sudo openfortivpn \
+    $gateway \
+    --username $username \
+    --trusted-cert $cert
+
+notify-send "Work VPN is down."
+
+# -- Awaiting 2FA
+# INFO:   Connected to gateway.
+# -- 2FA accepted
+# INFO:   Authenticated.
+# -- Connected
+# INFO:   Tunnel is up and running.
+# -- Disconnected
+# INFO:   Logged out.

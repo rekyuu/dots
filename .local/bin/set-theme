@@ -1,0 +1,6 @@
+#! /bin/sh
+
+export GTK_THEME=Breeze-Dark
+export QT_QPA_PLATFORMTHEME=gtk2
+
+feh --bg-fill ~/1395856260065.jpg

@@ -1,0 +1,10 @@
+[Unit]
+Description=Work VPN
+
+[Service]
+Type=idle
+ExecStart=/home/rekyuu/.local/bin/work-vpn
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=default.target

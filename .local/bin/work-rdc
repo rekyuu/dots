@@ -1,0 +1,21 @@
+#! /bin/sh
+
+ip=$(secret-tool lookup work rdc-ip)
+domain=$(secret-tool lookup work rdc-domain)
+username=$(secret-tool lookup work username)
+password=$(secret-tool lookup work password)
+
+# Start RDC
+xfreerdp \
+    /v:$ip \
+    /u:$domain\\$username \
+    /p:$password \
+    /multimon \
+    /sound:sys:pulse \
+    /microphone:sys:pulse,format:1 \
+    /gfx:RFX \
+    -compression \
+    +aero \
+    +themes \
+    +menu-anims \
+    +clipboard

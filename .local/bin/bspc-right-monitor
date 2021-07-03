@@ -1,0 +1,24 @@
+#! /bin/sh
+
+targetdesktop=$1
+
+function clearrecepticles {
+    desktop=$1
+    for win in `bspc query -N -d ${desktop} -n .leaf.\!window`; do
+        bspc node $win -k
+    done
+}
+
+function spawnrecepticleifempty {
+    windows=($(bspc query -N -d $targetdesktop))
+    if [ ${#windows[@]} -eq 1 ]; then
+        bspc node -i -s @$targetdesktop:/2
+    fi
+}
+
+clearrecepticles 3
+clearrecepticles 6
+clearrecepticles 9
+
+bspc desktop -f $targetdesktop
+spawnrecepticleifempty

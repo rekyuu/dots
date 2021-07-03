@@ -1,0 +1,39 @@
+#! /bin/sh
+
+targetdesktop=$1
+
+function clearrecepticles {
+    desktop=$1
+    for win in `bspc query -N -d ${desktop} -n .leaf.\!window`; do
+        bspc node $win -k
+    done
+}
+
+function movetelegram {
+    for win in `bspc query -N -d ${targetdesktop}`; do
+        wintitle=$(xtitle $win)
+        if [[ $wintitle == *Telegram* ]]; then
+            bspc node $win -s @$targetdesktop:/1
+            return
+        fi
+    done
+}
+
+function spawnrecepticleifempty {
+    windows=($(bspc query -N -d $targetdesktop))
+    if [ ${#windows[@]} -eq 1 ]; then
+        bspc node -i -d $targetdesktop
+    fi
+}
+
+clearrecepticles 1
+clearrecepticles 4
+clearrecepticles 7
+
+bspc config split_ratio 0.225
+
+bspc desktop -f $targetdesktop
+spawnrecepticleifempty
+movetelegram
+
+bspc config split_ratio 0.5

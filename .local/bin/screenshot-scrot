@@ -1,0 +1,23 @@
+#! /bin/sh
+
+filename=$(date '+%Y-%m-%dT%T.%3NZ.png')
+foldername=$(date '+%Y-%m')
+output=~/Screenshots/$foldername/$filename
+
+mkdir -p ~/Screenshots/$foldername
+
+case $1 in
+    all)
+        scrot $output -q 100 -m 
+        ;;
+    selection)
+        scrot $output -q 100 -s -f
+        ;;
+esac
+
+if [ -f $output ]; then
+    convert $output -shave 1x1 $output
+
+    xclip -selection clipboard -target image/png -i $output
+    notify-send "Image copied to clipboard."
+fi

@@ -1,0 +1,33 @@
+#! /bin/sh
+
+function runonce {
+    app=$1
+    if ! pgrep -f "${app//google-chrome-stable/chrome}" ;
+    then
+        $@&
+    fi
+}
+
+function reload {
+    killall -q $1
+    while pgrep -u $UID -x $1 >/dev/null; do sleep 1; done
+    $@&
+}
+
+set-theme
+
+reload dunst
+reload polybar default
+runonce picom
+
+runonce nm-applet
+runonce volctl
+runonce redshift-gtk
+runonce deluge-gtk
+runonce trackma-gtk
+runonce mpd_discord_richpresence --fork --no-idle --dont-broadcast-the-paused-state
+
+runonce steam
+runonce telegram-desktop
+runonce discord
+runonce google-chrome-stable

@@ -19,11 +19,7 @@ bspc config gapless_monocle     false
 bspc rule -a TelegramDesktop        monitor=HDMI-A-0 desktop=1 state=pseudo_tiled split_dir=east sticky=on split_ratio=0.225
 bspc rule -a discord                monitor=HDMI-A-0 desktop=1 
 
-# Middle monitor    
-bspc rule -a feh                    monitor=DisplayPort-1 desktop=2 state=floating center=on
-bspc rule -a Viewnior               monitor=DisplayPort-1 desktop=2 state=floating center=on
-bspc rule -a mpv                    monitor=DisplayPort-1 desktop=2 state=floating center=on
-bspc rule -a dolphin                monitor=DisplayPort-1 desktop=2 state=floating center=on
+# Middle monitor
 bspc rule -a code-oss               monitor=DisplayPort-1 desktop=2
 bspc rule -a Steam                  monitor=DisplayPort-1 desktop=5
 
@@ -33,6 +29,12 @@ bspc rule -a deluge                 monitor=DisplayPort-2 desktop=6
 
 # Multi monitor
 bspc rule -a xfreerdp               state=floating layer=below private=on sticky=on
+
+# Non specific
+bspc rule -a feh                    state=floating center=on
+bspc rule -a dolphin                state=floating center=on
+bspc rule -a Viewnior               state=floating center=on
+bspc rule -a mpv                    state=floating center=on
 
 # External rules
 bspc config external_rules_command  ~/.config/bspwm/external_rules

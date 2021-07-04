@@ -22,6 +22,7 @@ bspc rule -a discord                monitor=HDMI-A-0 desktop=1
 # Middle monitor
 bspc rule -a code-oss               monitor=DisplayPort-1 desktop=2
 bspc rule -a Steam                  monitor=DisplayPort-1 desktop=5
+bspc rule -a ffxiv_dx11.exe         monitor=DisplayPort-1 state=floating layer=below private=on sticky=on
 
 # Right monitor 
 bspc rule -a Google-chrome          monitor=DisplayPort-2 desktop=3

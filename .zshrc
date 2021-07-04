@@ -21,6 +21,8 @@ export PATH=$PATH:~/.local/bin
 # Aliases
 alias ls='ls -Ahl --color=auto --group-directories-first'
 alias py='python'
+alias htop='bpytop'
+alias tree='tree -la'
 
 # Prompt customization
 autoload -U colors && colors

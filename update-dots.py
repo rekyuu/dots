@@ -7,6 +7,7 @@ import sys
 
 DOTS=[
     "~/.config/bspwm",
+    "~/.config/Code - OSS/User/settings.json",
     "~/.config/dunst",
     "~/.config/fish",
     "~/.config/flavours",

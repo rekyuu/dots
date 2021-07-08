@@ -29,6 +29,7 @@ DOTS=[
     "~/.local/bin/work",
     "~/.local/bin/work-rdc",
     "~/.local/bin/work-vpn",
+    "~/.local/share/flavours/base16/templates/vscode-custom",
     "~/.gtkrc-2.0",
     "~/.Xresources",
     "~/.xinitrc",
@@ -44,10 +45,14 @@ def replicate(source, dest):
 
 def replicate_dir(source, dest):
     comp = filecmp.dircmp(source, dest)
-    different_files = comp.diff_files
 
-    if len(different_files) > 0:
-        for f in different_files:
+    if not os.path.isdir(dest):
+        shutil.copytree(source, dest)
+        print(f"{source} -> {dest}")
+        return
+    
+    if len(comp.diff_files) > 0:
+        for f in comp.diff_files:
             replicate_file(f"{source}/{f}", f"{dest}/{f}")
 
     if len(comp.subdirs) > 0:

@@ -37,8 +37,8 @@ file = "~/.base16_theme"
 template = "shell"
 rewrite = true
 
-# [[item]]
-# file = "~/.config/Code - OSS/User/settings.json"
-# template = "vscode"
-# start = "// Start flavours"
-# end = "// End flavours"
+[[item]]
+file = "~/.config/Code - OSS/User/settings.json"
+template = "vscode-custom"
+start = "// Start flavours"
+end = "// End flavours"

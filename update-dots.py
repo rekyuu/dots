@@ -55,7 +55,6 @@ def replicate_dir(source, dest):
             replicate_dir(f"{source}/{subdir}", f"{dest}/{subdir}")
 
 
-
 def replicate_file(source, dest):
     both_are_the_same = os.path.isfile(dest) and filecmp.cmp(source, dest)
     source_is_newer = os.path.getctime(source) > os.path.getctime(dest) if os.path.isfile(dest) else True

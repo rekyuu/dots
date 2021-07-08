@@ -1,11 +1,22 @@
+; Start flavours
 [colors]
-background = #C0000000
-background-alt = #C0444444
-foreground = #C0dfdfdf
-foreground-alt = #C0dfdfdf
-primary = #C0ffb52a
-secondary = #C0e60053
-alert = #C0bd2c40
+base00 = ee151718
+base01 = 282a2b
+base02 = 3B758C
+base03 = 41535B
+base04 = 43a5d5
+base05 = d6d6d6
+base06 = eeeeee
+base07 = ffffff
+base08 = Cd3f45
+base09 = db7b55
+base0A = e6cd69
+base0B = 9fca56
+base0C = 55dbbe
+base0D = 55b5db
+base0E = a074c4
+base0F = 8a553f
+; End flavours
 
 [settings]
 screenchange-reload = true
@@ -28,8 +39,8 @@ offset-y = 10
 radius = 0.0
 fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.base00}
+foreground = ${colors.base07}
 
 line-size = 0
 line-color = #f00
@@ -66,19 +77,19 @@ cursor-scroll = ns-resize
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.base03}
+label-focused-underline= ${colors.base0d}
 label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
 
 label-urgent = %index%!
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.base08}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.base05}
 label-empty-padding = 2
 
 [module/date]
@@ -92,7 +103,7 @@ time = "%A, %B %e, %Y - %H:%M:%S"
 time-alt = "%A, %B %e, %Y - %H:%M:%S"
 
 format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.base05}
 format-underline = #0a6cf5
 
 label = %time%

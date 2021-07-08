@@ -1,0 +1,13 @@
+#! /bin/sh
+
+case $1 in 
+    up | start)
+        systemctl --user start work-vpn
+        ;;
+    down | stop)
+        systemctl --user stop work-vpn
+        ;;
+    *)
+        systemctl --user status work-vpn
+        ;;
+esac

@@ -3,4 +3,21 @@
 export GTK_THEME=Breeze-Dark
 export QT_QPA_PLATFORMTHEME=gtk2
 
+theme=seti
+
+# .Xresources
+ln -sf \
+    ~/dev/sh/base16-xresources/xresources/base16-$theme-256.Xresources \
+    ~/.Xresources
+
+# Shell
+ln -sf \
+    ~/dev/sh/base16-shell/scripts/base16-$theme.sh \
+    .base16_theme
+
+# Kitty
+ln -sf \
+    ~/dev/sh/base16-kitty/colors/base16-$theme-256.conf \
+    ~/.config/kitty/colors.conf
+
 feh --bg-fill ~/1395856260065.jpg

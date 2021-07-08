@@ -1,0 +1,7 @@
+#! /bin/sh
+
+feh --bg-fill $1
+flavours generate dark $1
+flavours apply generated
+
+colortest

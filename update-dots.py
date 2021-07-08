@@ -6,6 +6,7 @@ import shutil
 DOTS=[
     "~/.config/bspwm",
     "~/.config/dunst",
+    "~/.config/fish",
     "~/.config/gtk-3.0",
     "~/.config/kitty",
     "~/.config/mpd",
@@ -20,12 +21,13 @@ DOTS=[
     "~/.local/bin/bspc-right-monitor",
     "~/.local/bin/pacman-remove-orphans",
     "~/.local/bin/screenshot-scrot",
+    "~/.local/bin/set-flavour",
     "~/.local/bin/set-theme",
+    "~/.local/bin/work",
     "~/.local/bin/work-rdc",
     "~/.local/bin/work-vpn",
     "~/.gtkrc-2.0",
     "~/.xinitrc",
-    "~/.zshrc",
 ]
 
 for dot in DOTS:

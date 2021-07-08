@@ -17,7 +17,8 @@ function reload {
 set-theme
 
 reload dunst
-reload polybar default
+
+runonce polybar -r default
 runonce picom
 
 runonce nm-applet

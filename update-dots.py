@@ -1,12 +1,15 @@
 #! /bin/python
 
+import filecmp
 import os
 import shutil
+import sys
 
 DOTS=[
     "~/.config/bspwm",
     "~/.config/dunst",
     "~/.config/fish",
+    "~/.config/flavours",
     "~/.config/gtk-3.0",
     "~/.config/kitty",
     "~/.config/mpd",
@@ -27,20 +30,52 @@ DOTS=[
     "~/.local/bin/work-rdc",
     "~/.local/bin/work-vpn",
     "~/.gtkrc-2.0",
+    "~/.Xresources",
     "~/.xinitrc",
 ]
 
-for dot in DOTS:
-    source = dot.replace("~", "/home/rekyuu")
-    destination_dir = "/".join(dot.split("/")[1:-1])
-    destination = "/".join(dot.split("/")[1:])
 
-    print(f"{source} -> {destination}")
-
-    if len(dot.split("/")[1:-1]) > 0:
-        os.makedirs(destination_dir, exist_ok=True)
-
+def replicate(source, dest):
     if os.path.isdir(source):
-        shutil.copytree(source, destination, dirs_exist_ok=True)
+        replicate_dir(source, dest)
     elif os.path.isfile(source):
-        shutil.copyfile(source, destination, follow_symlinks=True)
+        replicate_file(source, dest)
+
+
+def replicate_dir(source, dest):
+    comp = filecmp.dircmp(source, dest)
+    different_files = comp.diff_files
+
+    if len(different_files) > 0:
+        for f in different_files:
+            replicate_file(f"{source}/{f}", f"{dest}/{f}")
+
+    if len(comp.subdirs) > 0:
+        for subdir in comp.subdirs:
+            replicate_dir(f"{source}/{subdir}", f"{dest}/{subdir}")
+
+
+
+def replicate_file(source, dest):
+    both_are_the_same = os.path.isfile(dest) and filecmp.cmp(source, dest)
+    source_is_newer = os.path.getctime(source) > os.path.getctime(dest) if os.path.isfile(dest) else True
+
+    if not both_are_the_same and source_is_newer:
+        destination_dir = "/".join(dest.split("/")[:-1])
+        if destination_dir != "" and len(destination_dir.split("/")) > 0:
+            os.makedirs(destination_dir, exist_ok=True)
+                
+        shutil.copyfile(source, dest, follow_symlinks=True)
+
+        print(f"{source} -> {dest}")
+
+
+for dot in DOTS:
+    home = dot.replace("~", "/home/rekyuu")
+    repo = "/".join(dot.split("/")[1:])
+
+    if len(sys.argv) >= 2:
+        if sys.argv[1] == "export":
+            replicate(repo, home)
+    else:
+        replicate(home, repo)

@@ -1,0 +1,44 @@
+shell = "bash -c '{}'"
+
+[[item]]
+file = "~/.config/dunst/dunstrc"
+template = "dunst"
+# hook = "killall dunst;dunst"
+
+[[item]]
+file = "~/.config/kitty/colors.conf"
+template = "kitty"
+subtemplate = "default-256"
+rewrite = true
+hook = "kitty @ set-colors -a -c ~/.config/kitty/colors.conf"
+
+[[item]]
+file = "~/.config/polybar/config"
+template = "polybar"
+start = "; Start flavours"
+end = "; End flavours"
+
+[[item]]
+file = "~/.config/rofi/config.rasi"
+template = "rofi"
+subtemplate = "colors"
+start = "/* Start flavours */"
+end = "/* End flavours */"
+
+[[item]]
+file = "~/.Xresources"
+template = "xresources"
+subtemplate = "default-256"
+rewrite = true
+hook = "xrdb -load ~/.Xresources"
+
+[[item]]
+file = "~/.base16_theme"
+template = "shell"
+rewrite = true
+
+# [[item]]
+# file = "~/.config/Code - OSS/User/settings.json"
+# template = "vscode"
+# start = "// Start flavours"
+# end = "// End flavours"

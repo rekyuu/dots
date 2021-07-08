@@ -138,6 +138,33 @@ function fish_prompt
         end
 
         set_color -o
+        if test $status_ahead -ne 0
+            echo -n ' '(set_color brmagenta)'==>'
+        end
+        if test $status_behind -ne 0
+            echo -n ' '(set_color brmagenta)'<=='
+        end
+        if test $status_stashed -ne 0
+            echo -n ' '(set_color cyan)'==='
+        end
+        if test $status_added -ne 0
+            echo -n ' '(set_color green)'A'
+        end
+        if test $status_deleted -ne 0
+            echo -n ' '(set_color red)'D'
+        end
+        if test $status_modified -ne 0
+            echo -n ' '(set_color blue)'M'
+        end
+        if test $status_renamed -ne 0
+            echo -n ' '(set_color magenta)'R'
+        end
+        if test $status_unmerged -ne 0
+            echo -n ' '(set_color yellow)'U'
+        end
+        if test $status_untracked -ne 0
+            echo -n ' '(set_color white)'T'
+        end
 
         if test -n "$branch"
             if test $branch_detached -ne 0
@@ -153,33 +180,6 @@ function fish_prompt
         if test -n "$action"
             set_color normal
             echo -n (set_color white)':'(set_color -o brred)"$action"
-        end
-        if test $status_ahead -ne 0
-            echo -n ' '(set_color brmagenta)'⬆'
-        end
-        if test $status_behind -ne 0
-            echo -n ' '(set_color brmagenta)'⬇'
-        end
-        if test $status_stashed -ne 0
-            echo -n ' '(set_color cyan)'✭'
-        end
-        if test $status_added -ne 0
-            echo -n ' '(set_color green)'✚'
-        end
-        if test $status_deleted -ne 0
-            echo -n ' '(set_color red)'✖'
-        end
-        if test $status_modified -ne 0
-            echo -n ' '(set_color blue)'✱'
-        end
-        if test $status_renamed -ne 0
-            echo -n ' '(set_color magenta)'➜'
-        end
-        if test $status_unmerged -ne 0
-            echo -n ' '(set_color yellow)'═'
-        end
-        if test $status_untracked -ne 0
-            echo -n ' '(set_color white)'◼'
         end
 
         set_color normal

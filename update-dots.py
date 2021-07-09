@@ -11,6 +11,7 @@ DOTS=[
     "~/.config/dunst",
     "~/.config/fish",
     "~/.config/flavours",
+    "~/.config/godot/text_editor_themes/base16_theme.tet",
     "~/.config/gtk-3.0",
     "~/.config/kitty",
     "~/.config/mpd",

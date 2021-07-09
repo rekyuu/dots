@@ -42,3 +42,8 @@ file = "~/.config/Code - OSS/User/settings.json"
 template = "vscode-custom"
 start = "// Start flavours"
 end = "// End flavours"
+
+[[item]]
+file = "~/.config/godot/text_editor_themes/base16_theme.tet"
+template = "godot"
+rewrite = true

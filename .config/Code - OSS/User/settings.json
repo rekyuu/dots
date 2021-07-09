@@ -136,9 +136,7 @@
             },
             {
                 "scope": [
-                    "storage",
-                    "storage.type",
-                    "storage.modifier",
+                    "storage.modifier"
                 ],
                 "settings": {
                     "foreground": "#55b5db",
@@ -371,6 +369,14 @@
                 ],
                 "settings": {
                     "foreground": "#Cd3f45",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.other"
+                ],
+                "settings": {
                     "fontStyle": "italic"
                 }
             },

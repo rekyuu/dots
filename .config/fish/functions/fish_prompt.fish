@@ -168,9 +168,9 @@ function fish_prompt
 
         if test -n "$branch"
             if test $branch_detached -ne 0
-                set_color brmagenta
+                set_color red
             else
-                set_color green
+                set_color white
             end
             echo -n " $branch"
         end

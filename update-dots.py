@@ -30,6 +30,7 @@ DOTS=[
     "~/.local/bin/screenshot-scrot",
     "~/.local/bin/set-flavour",
     "~/.local/bin/set-theme",
+    "~/.local/bin/stfu",
     "~/.local/bin/work",
     "~/.local/bin/work-rdc",
     "~/.local/bin/work-vpn",

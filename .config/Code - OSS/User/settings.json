@@ -418,5 +418,6 @@
     // End flavours
     "colorize.include": [
         "*.*"
-    ]
+    ],
+    "git.autofetch": true
 }

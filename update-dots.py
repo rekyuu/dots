@@ -7,6 +7,7 @@ import sys
 
 DOTS=[
     "~/.config/bspwm",
+    "~/.config/cava",
     "~/.config/Code - OSS/User/settings.json",
     "~/.config/dunst",
     "~/.config/fish",
@@ -16,6 +17,7 @@ DOTS=[
     "~/.config/kitty",
     "~/.config/mpd",
     "~/.config/ncmpcpp",
+    "~/.config/ncmpcpp/ncmpcpp-ueberzug",
     "~/.config/picom",
     "~/.config/polybar",
     "~/.config/rofi",
@@ -64,9 +66,8 @@ def replicate_dir(source, dest):
 
 def replicate_file(source, dest):
     both_are_the_same = os.path.isfile(dest) and filecmp.cmp(source, dest)
-    source_is_newer = os.path.getctime(source) > os.path.getctime(dest) if os.path.isfile(dest) else True
 
-    if not both_are_the_same and source_is_newer:
+    if not both_are_the_same:
         destination_dir = "/".join(dest.split("/")[:-1])
         if destination_dir != "" and len(destination_dir.split("/")) > 0:
             os.makedirs(destination_dir, exist_ok=True)
@@ -79,9 +80,5 @@ def replicate_file(source, dest):
 for dot in DOTS:
     home = dot.replace("~", "/home/rekyuu")
     repo = "/".join(dot.split("/")[1:])
-
-    if len(sys.argv) >= 2:
-        if sys.argv[1] == "export":
-            replicate(repo, home)
-    else:
-        replicate(home, repo)
+    
+    replicate(home, repo)

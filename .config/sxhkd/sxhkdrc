@@ -25,7 +25,7 @@
 
 # terminal emulator
 super + {_,shift + } Return
-	{kitty --single-instance, bspc node -i}
+	{kitty, bspc node -i}
 
 # program launcher
 super + {d,r}

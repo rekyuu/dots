@@ -98,15 +98,16 @@ visualizer_in_stereo = yes
 #
 ## Available values: spectrum, wave, wave_filled, ellipse.
 ##
-visualizer_type = spectrum
+visualizer_type = ellipse
 #
-visualizer_fps = 60
+visualizer_fps = 30
 #
-visualizer_autoscale = yes
+#visualizer_autoscale = yes
 #
-visualizer_look = ▖▉
+#visualizer_look = ▖▉
+visualizer_look = "  "
 #
-visualizer_color = white
+#visualizer_color = white
 #visualizer_color = blue, cyan, green, yellow, magenta, red
 #
 ## Alternative subset of 256 colors for terminals that support it.
@@ -243,17 +244,17 @@ alternative_header_first_line_format = $aqqu$/a $b{%t}|{%f}$/b $atqq$/a
 alternative_header_second_line_format = {%b}|{%D}
 #alternative_header_second_line_format = {{$2$b%a$/b$9}{ - %b}}|{%D}
 #
-current_item_prefix = $(white)$r
+#current_item_prefix = $(white)$r
 #
 #current_item_suffix = $/r$(end)
 #
-current_item_inactive_column_prefix = $(white)$r
+#current_item_inactive_column_prefix = $(white)$r
 #
 #current_item_inactive_column_suffix = $/r$(end)
 #
-now_playing_prefix = $(white)$b
+#now_playing_prefix = $(white)$b
 #
-now_playing_suffix = $/b$(end)
+#now_playing_suffix = $/b$(end)
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #
@@ -313,8 +314,9 @@ now_playing_suffix = $/b$(end)
 ##   available.
 ##
 #
-song_columns_list_format = (6f)[]{NEr:#} (50)[]{t|f:Title} (40)[]{b} (7f)[]{lr}
+#song_columns_list_format = (6f)[]{NEr:#} (50)[]{t|f:Title} (40)[]{b} (7f)[]{lr}
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+song_columns_list_format = (100)[white]{t|f:Title} (7f)[blue]{lr}
 #
 ##### various settings #####
 #
@@ -322,7 +324,7 @@ song_columns_list_format = (6f)[]{NEr:#} (50)[]{t|f:Title} (40)[]{b} (7f)[]{lr}
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-#execute_on_song_change = ""
+execute_on_song_change = "~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
 #
 ##
 ## Note: Custom command that will be executed each time player state
@@ -343,7 +345,7 @@ song_columns_list_format = (6f)[]{NEr:#} (50)[]{t|f:Title} (40)[]{b} (7f)[]{lr}
 ##
 ## Note: Possible display modes: classic, columns.
 ##
-#playlist_display_mode = columns
+playlist_display_mode = columns
 #
 #browser_display_mode = classic
 #
@@ -361,9 +363,9 @@ song_columns_list_format = (6f)[]{NEr:#} (50)[]{t|f:Title} (40)[]{b} (7f)[]{lr}
 #
 volume_change_step = 1
 #
-#autocenter_mode = no
+autocenter_mode = yes
 #
-#centered_cursor = no
+centered_cursor = yes
 #
 ##
 ## Note: You can specify third character which will be used to build 'empty'
@@ -388,7 +390,7 @@ user_interface = alternative
 #
 #media_library_albums_split_by_date = yes
 #
-#media_library_hide_album_dates = no
+media_library_hide_album_dates = yes
 #
 ## Available values: wrapped, normal.
 ##
@@ -455,15 +457,15 @@ startup_screen = visualizer
 ## Note: You can define startup slave screen by choosing screen from the list
 ## above or an empty value for no slave screen.
 ##
-#startup_slave_screen = ""
+startup_slave_screen = playlist
 #
-#startup_slave_screen_focus = no
+startup_slave_screen_focus = yes
 #
 ##
 ## Default width of locked screen (in %).  Acceptable values are from 20 to 80.
 ##
 #
-#locked_screen_width_part = 50
+locked_screen_width_part = 45
 #
 #ask_for_locked_screen_width_part = yes
 #
@@ -576,11 +578,11 @@ main_window_color = default
 color1 = default
 color2 = red
 progressbar_color = black
-progressbar_elapsed_color = red:b
-statusbar_color = default
+progressbar_elapsed_color = red
+statusbar_color = blue
 statusbar_time_color = default:b
 player_state_color = default:b
-alternative_ui_separator_color = default:b
+alternative_ui_separator_color = default
 window_border_color = black
 active_window_border = black
 

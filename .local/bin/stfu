@@ -1,3 +1,4 @@
 #! /bin/sh
 
-mpc current --format "Shut the fuck up I'm listening to %title% from %album%" | xclip -selection clipboard -i
+mpc current --format "Shut the fuck up I'm listening to %title% from %album%" | tr -d '\n' | xclip -selection clipboard -i
+notify-send "Song copied to clipboard."

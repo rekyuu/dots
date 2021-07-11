@@ -132,8 +132,11 @@ XF86AudioMute
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-XF86Audio{Play,Prev,Next,Stop}
-	mpc -q {toggle,cdprev,next,stop}
+XF86Audio{Play,Prev,Next}
+	mpc -q {toggle,cdprev,next}
+
+XF86AudioStop
+	stfu
 
 # screenshots
 {_,shift + }Print

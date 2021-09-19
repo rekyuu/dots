@@ -1,6 +1,6 @@
 #! /bin/sh
 
-filename=$(date '+%Y-%m-%dT%T.%3NZ.png')
+filename=$(date '+%Y-%m-%dT%T.%3NZ')
 foldername=$(date '+%Y-%m')
 output=~/Screenshots/$foldername/$filename
 
@@ -8,16 +8,51 @@ mkdir -p ~/Screenshots/$foldername
 
 case $1 in
     all)
-        scrot $output -q 100 -m 
+        scrot $output.png -q 100 -m
         ;;
     selection)
-        scrot $output -q 100 -s -f
+        scrot $output.png -q 100 -s -f -l style=dash
+        ;;
+    video)
+        if pidof ffmpeg; then
+            killall ffmpeg
+        else
+            slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+            read -r X Y W H G ID < <(echo $slop)
+
+            width=${#W}
+
+            if [ $width -gt 0 ]; then
+                ffmpeg -f x11grab \
+                    -s "$W"x"$H" \
+                    -framerate 60 \
+                    -thread_queue_size 512 \
+                    -i :0.0+$X,$Y \
+                    -f pulse -i alsa_output.pci-0000_0b_00.4.iec958-stereo.monitor \
+                    -ac 2 \
+                    -c:v libx265 \
+                    -qp 0 \
+                    -preset ultrafast \
+                    -crf 28 \
+                    -c:a aac \
+                    -b:a 128k \
+                    -vsync 2 \
+                    -tune zerolatency \
+                    $output.mp4
+            fi
+        fi
         ;;
 esac
 
-if [ -f $output ]; then
-    convert $output -shave 1x1 $output
+case $1 in
+    all|selection)
+        if [ -f $output.png ]; then
+            convert $output.png -shave 1x1 $output.png
 
-    xclip -selection clipboard -target image/png -i $output
-    notify-send "Image copied to clipboard."
-fi
+            xclip -selection clipboard -target image/png -i $output.png
+            notify-send "Image copied to clipboard."
+        fi
+        ;;
+    video)
+        notify-send "Video recorded."
+esac

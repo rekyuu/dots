@@ -1,3 +1,6 @@
+# Exports
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Aliases
 alias cbonsai='cbonsai -li'
 alias colors='colortest'

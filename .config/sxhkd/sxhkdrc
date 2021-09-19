@@ -37,7 +37,7 @@ super + Tab
 
 # file explorer
 super + e
-	dolphin
+	thunar
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -113,11 +113,11 @@ super + button5
 
 # expand a window by moving its top and bottom sides outward
 super + alt + button4
-	bspc node -z top 0 10 bottom 0 10
+	bspc node -z top 0 -10 bottom 0 -10
 
 # contract a window by moving its top and bottom sides inward
 super + alt + button5
-	bspc node -z top 0 -10 bottom 0 -10
+	bspc node -z top 0 10 bottom 0 10
 
 # media keys
 XF86AudioRaiseVolume
@@ -139,5 +139,9 @@ XF86AudioStop
 	stfu
 
 # screenshots
-{_,shift + }Print
-	screenshot-scrot {all,selection}
+{_,shift + ,ctrl +}Print
+	screenshot-scrot {all,selection,video}
+
+# lock
+{super + l}
+	i3lock -i 1395856260065_lock.png -t -c 000000

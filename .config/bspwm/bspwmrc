@@ -2,6 +2,11 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+bspc config pointer_modifier        mod4
+bspc config pointer_action1         move
+bspc config pointer_action2         resize_side
+bspc config pointer_action3         resize_corner
+
 bspc monitor HDMI-A-0       -d 1 4 7 # Left
 bspc monitor DisplayPort-1  -d 2 5 8 # Middle
 bspc monitor DisplayPort-2  -d 3 6 9 # Right
@@ -11,29 +16,31 @@ bspc config window_gap          10
 
 bspc config -m DisplayPort-2    top_padding 0
 
+bspc config ignore_ewmh_focus   true
 bspc config split_ratio         0.5
 bspc config borderless_monocle  false
 bspc config gapless_monocle     false
 
 # Left monitor
-bspc rule -a TelegramDesktop        monitor=HDMI-A-0 desktop=1 state=pseudo_tiled split_dir=east sticky=on split_ratio=0.225
-bspc rule -a discord                monitor=HDMI-A-0 desktop=1 
+bspc rule -a TelegramDesktop                desktop=1 split_dir=east sticky=on split_ratio=0.225 follow=off focus=off
+bspc rule -a discord                        desktop=1 follow=off focus=off
+bspc rule -a "advanced combat tracker.exe"  desktop=4 follow=off focus=off
+bspc rule -a fflogs                         desktop=7 follow=off focus=off
 
 # Middle monitor
-bspc rule -a code-oss               monitor=DisplayPort-1 desktop=2
-bspc rule -a Steam                  monitor=DisplayPort-1 desktop=5
-bspc rule -a ffxiv_dx11.exe         monitor=DisplayPort-1 state=floating layer=below private=on sticky=on
+bspc rule -a jetbrains-rider        desktop=2
+bspc rule -a code-oss               desktop=2
+bspc rule -a Steam                  desktop=5 follow=off focus=off
+bspc rule -a ffxiv_dx11.exe         state=floating center=on layer=below private=on sticky=on
 
-# Right monitor 
-bspc rule -a Google-chrome          monitor=DisplayPort-2 desktop=3
-bspc rule -a deluge                 monitor=DisplayPort-2 desktop=6
+# Right monitor
 
 # Multi monitor
 bspc rule -a xfreerdp               state=floating layer=below private=on sticky=on
 
 # Non specific
 bspc rule -a feh                    state=floating center=on
-bspc rule -a dolphin                state=floating center=on
+bspc rule -a Thunar                 state=floating center=on
 bspc rule -a Viewnior               state=floating center=on
 bspc rule -a mpv                    state=floating center=on
 

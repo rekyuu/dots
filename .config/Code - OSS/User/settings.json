@@ -6,7 +6,8 @@
     "explorer.confirmDelete": false,
     "window.menuBarVisibility": "compact",
     "editor.fontFamily": "'Cascadia Code', 'Victor Mono SemiBold', 'Fira Code', 'monospace', monospace",
-    "editor.fontLigatures": true,
+    //"editor.fontLigatures": true,
+    "editor.fontLigatures": "'calt', 'ss01'",
     "editor.inlineHints.fontFamily": "'Cascadia Code', 'Victor Mono SemiBold', 'Fira Code', 'monospace', monospace",
     "window.titleBarStyle": "custom",
     "window.autoDetectColorScheme": true,
@@ -419,5 +420,8 @@
     "colorize.include": [
         "*.*"
     ],
-    "git.autofetch": true
+    "git.autofetch": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.editor.untitled.hint": "hidden",
+    "rust-client.disableRustup": true
 }

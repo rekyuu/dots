@@ -26,7 +26,8 @@ runonce volctl
 runonce redshift-gtk
 runonce deluge-gtk
 runonce trackma-gtk
-runonce mpd_discord_richpresence --fork --no-idle --dont-broadcast-the-paused-state
+# runonce mpd_discord_richpresence --fork --no-idle --dont-broadcast-the-paused-state
+runonce DiscordMPD
 runonce bitwarden-desktop
 
 runonce steam

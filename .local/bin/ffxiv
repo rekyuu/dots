@@ -1,0 +1,5 @@
+#! /bin/sh
+
+mopimopi &
+fflogs-uploader &
+~/bin/ffxiv-run-both.sh

@@ -1,0 +1,3 @@
+#! /bin/sh
+
+google-chrome-stable --app="https://haeruhaeru.github.io/mopimopi/?HOST_PORT=ws://127.0.0.1:10501/"

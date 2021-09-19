@@ -27,6 +27,8 @@ DOTS=[
     "~/.local/bin/bspc-left-monitor",
     "~/.local/bin/bspc-right-monitor",
     "~/.local/bin/pacman-remove-orphans",
+    "~/.local/bin/ffxiv",
+    "~/.local/bin/mopimopi",
     "~/.local/bin/screenshot-scrot",
     "~/.local/bin/set-flavour",
     "~/.local/bin/set-theme",

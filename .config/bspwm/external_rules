@@ -6,15 +6,29 @@ instance=$3
 consequences=$4
 title=$(xtitle "$wid")
 
+# notify-send "CLASS: $class INSTANCE: $instance CONSEQUENCES: $consequences TITLE: $title"
+
 case $class in 
     google-chrome | Google-chrome)
         if [[ $title == *YouTube* ]] || [[ $title == *Plex* ]]; then
             echo "desktop=3 split_dir=west sticky=on"
+        elif [[ $title == *MopiMopi* ]]; then
+            echo "desktop=3"
         fi
         ;;
     telegram-desktop | TelegramDesktop)
         if [[ $title == *"Media viewer"* ]]; then
             echo "state=floating"
+        fi
+        ;;
+    Godot)
+        if [[ $instance == *Godot_Engine* ]]; then
+            echo "state=floating center=on"
+        fi
+        ;;
+    jetbrains-rider)
+        if [[ $title == *win0* ]] || [[ $title == "Welcome to JetBrains Rider" ]]; then
+            echo "state=floating center=on"
         fi
         ;;
 esac
